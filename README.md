@@ -9,7 +9,7 @@ pip install -r requirements.txt
 ## Baseline Weights
 For fair comparison, we provide reproduced baseline weights from prior UAP methods (e.g., SPGD, SGA, DM-UAP) in the baseline/ directory.
 These weights are organized as follows:
-textbaseline/
+baseline/
 ├── spgd/
 │   └── spgd/
 │       ├── AlexNet/
