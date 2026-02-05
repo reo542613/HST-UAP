@@ -6,8 +6,8 @@
 [2026/01/25 07:03:13] Initializing LPIPS model (AlexNet backbone)...
 [2026/01/25 07:03:14] Loading dataset: Imagenet...
 [2026/01/25 07:03:14] Loading perturbations:
-  Flow: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/flow.pth
-  Noise: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/noise.pth
+  Flow: /mnt/BEiT-B/flow.pth
+  Noise: /mnt/BEiT-B/noise.pth
 [2026/01/25 07:03:14] 
 Starting evaluation loop...
 [2026/01/25 07:03:14] ----------------------------------------------------------------------------------------------------
