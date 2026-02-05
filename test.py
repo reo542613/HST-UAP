@@ -16,12 +16,12 @@ import logging
 import sys
 from timm.data import resolve_data_config
 from timm.data.transforms_factory import create_transform
-# === 引入评估指标库 ===
+
 import lpips
 from torchmetrics.image.fid import FrechetInceptionDistance
 from torchmetrics.functional import structural_similarity_index_measure
 
-# === 假设 utils.utils 包含了你原有的辅助函数 ===
+
 
 def flow_st(images, flows, batch_size):
     # print(images.shape)
@@ -99,25 +99,25 @@ def flow_st(images, flows, batch_size):
 
 
 model_name_map = {
-    # 必须加 tf_ 前缀才有权重
+    
     'EfficientNetV2-S': 'tf_efficientnetv2_s',
     'EfficientNetV2-M': 'tf_efficientnetv2_m',
 
-    # ConvNeXt 1.0 写法
+    
     'ConvNeXt-T': 'convnext_tiny',
     'ConvNeXt-S': 'convnext_small',
     'ConvNeXt-B': 'convnext_base',
-    'ConvNeXt-B-22K': 'convnext_base.fb_in22k_ft_in1k',  # 修正后缀
+    'ConvNeXt-B-22K': 'convnext_base.fb_in22k_ft_in1k', 
 
-    # BEiT
+    
     'BEiT-B': 'beit_base_patch16_224',
     'BEiTv2-B': 'beitv2_base_patch16_224',
 
-    # DINOv2 (使用 ViT 命名)
+    
     'DINOv2-S': 'vit_small_patch14_dinov2.lvd142m',
     'DINOv2-B': 'vit_base_patch14_dinov2.lvd142m',
 
-    # 标准 ViT/DeiT/Swin
+    
     'ViT-B': 'vit_base_patch16_224',
     'DeiT-S': 'deit_small_patch16_224',
     'DeiT-B': 'deit_base_patch16_224',
@@ -130,42 +130,41 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', type=str, default='Imagenet', help='CIFAR10, CIFAR100, or Imagenet')
     parser.add_argument('--model', type=str, default='1', help='')
-    parser.add_argument('--flow_path', type=str, default='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/0.9258_10000_0.3_0.05_0.01_0_0_180_flow.pth', help='Path to saved flow_field (.pth)')
-    parser.add_argument('--noise_path', type=str, default='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/0.9258_10000_0.3_0.05_0.01_0_0_180_noise.pth', help='Path to saved perb_noise (.pth)')
+    parser.add_argument('--flow_path', type=str, default='/mnt/DeiT-S/flow.pth', help='Path to saved flow_field (.pth)')
+    parser.add_argument('--noise_path', type=str, default='/mnt//DeiT-S/.pth', help='Path to saved perb_noise (.pth)')
     parser.add_argument('--batch_size', type=int, default=100, help='Batch size for testing')
-    parser.add_argument('--data_path', type=str, default='/mnt/igps_622/la/imagenet/val/', help='Path to dataset')
-    parser.add_argument('--log_dir', type=str, default='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/',
+    parser.add_argument('--data_path', type=str, default='/imagenet/val/', help='Path to dataset')
+    parser.add_argument('--log_dir', type=str, default='/DeiT-S/',
                         help='Directory to save logs')
     return parser.parse_args()
 
 
-# ================= 配置 Logger =================
+
 def setup_logger(log_dir):
-    # 1. 自动创建目录
+    
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
         print(f"Log directory created: {log_dir}")
 
-    # 2. 生成带时间戳的文件名
+    
     log_file_path = os.path.join(log_dir, f"Test_Result_{get_args().model}.log")
 
-    # 3. 配置 Logging
+   
     logger = logging.getLogger("TestLogger")
     logger.setLevel(logging.INFO)
 
-    # 防止重复添加 handler
+    
     if not logger.handlers:
-        # File Handler (写入文件)
+       
         fh = logging.FileHandler(log_file_path, mode='w')
         fh.setFormatter(logging.Formatter('[%(asctime)s] %(message)s', datefmt='%Y/%m/%d %H:%M:%S'))
         logger.addHandler(fh)
 
-        # Stream Handler (输出到控制台)
+       
         sh = logging.StreamHandler(sys.stdout)
         sh.setFormatter(logging.Formatter('[%(asctime)s] %(message)s', datefmt='%Y/%m/%d %H:%M:%S'))
         logger.addHandler(sh)
 
-    # 屏蔽其他库的繁杂日志
     logging.getLogger('matplotlib').setLevel(logging.WARNING)
     logging.getLogger('PIL').setLevel(logging.ERROR)
 
@@ -175,7 +174,7 @@ def setup_logger(log_dir):
 def main():
     args = get_args()
 
-    # 初始化日志
+   
     logger, log_file = setup_logger(args.log_dir)
     logger.info("=" * 50)
     logger.info(f"Starting Test Script")
@@ -183,7 +182,7 @@ def main():
     logger.info(f"Arguments: {args}")
     logger.info("=" * 50)
 
-    # ================= 1. 初始化评估模型 (LPIPS) =================
+    
     logger.info("Initializing LPIPS model (AlexNet backbone)...")
     try:
         loss_fn_lpips = lpips.LPIPS(net='alex').cuda()
@@ -191,7 +190,7 @@ def main():
         logger.error(f"Failed to load LPIPS: {e}")
         return
 
-    # ================= 2. 数据集加载 =================
+    
     logger.info(f"Loading dataset: {args.dataset}...")
     if args.dataset == 'CIFAR10':
         dataset_mean = [0.4914, 0.4822, 0.4465]
@@ -229,7 +228,7 @@ def main():
     sample_img, _ = testset[0]
     nc, H, W = sample_img.shape
 
-    # ================= 3. 加载扰动 (Flow & Noise) =================
+    
     logger.info(f"Loading perturbations:\n  Flow: {args.flow_path}\n  Noise: {args.noise_path}")
 
     try:
@@ -244,7 +243,6 @@ def main():
     unnormalize = lambda x: x * std + mu
     normalize = lambda x: (x - mu) / std
 
-    # ================= 4. 定义待测模型列表 =================
     test_model_names = [
         #'AlexNet', 'VGG16', 'VGG19', 'ResNet152', 'GoogLeNet',
          'DeiT-B', 'DeiT-S' ,  'Swin-B', 'Swin-S', 'Swin-T','ViT-B'
@@ -252,7 +250,7 @@ def main():
     ]
     # test_model_names = [args.model]
 
-    # 全局变量：用于存储图像质量指标（只需计算一次）
+    
     quality_metrics = {
         'L2': 0.0, 'SSIM': 0.0, 'FID': 0.0, 'LPIPS': 0.0,
         'calculated': False
@@ -267,7 +265,7 @@ def main():
 
     for test_model_name in test_model_names:
         try:
-            # --- 修复变量名问题：确保统一赋值给 test_model ---
+           
             if test_model_name == 'VGG19':
                 test_model = models.vgg19(pretrained=True)
             elif test_model_name == 'ResNet152':
@@ -295,15 +293,14 @@ def main():
             elif test_model_name == 'Swin-B':
 
                 test_model = timm.create_model('swin_base_patch4_window7_224', pretrained=True)
-            # === EfficientNetV2 系列 (修正前缀) ===
+            
             elif args.model == 'EfficientNetV2-S':
-            # 修正：加上 tf_ 前缀以加载 Google 原版权重
-            # 默认分辨率通常是 300 或 384，请注意调整 dataloader
+            
                 test_model = timm.create_model('tf_efficientnetv2_s', pretrained=True)
             elif args.model == 'EfficientNetV2-M':
                 test_model = timm.create_model('tf_efficientnetv2_m', pretrained=True)
 
-            # === ConvNeXt 系列 (稳健写法) ===
+           
             elif args.model == 'ConvNeXt-T':
                 test_model = timm.create_model('convnext_tiny', pretrained=True)
             elif args.model == 'ConvNeXt-S':
@@ -311,31 +308,14 @@ def main():
             elif args.model == 'ConvNeXt-B':
                 test_model = timm.create_model('convnext_base', pretrained=True)
             elif args.model == 'ConvNeXt-B-22K':
-                # ImageNet-1k 微调版，性能最强
+               
                 test_model = timm.create_model('convnext_base.fb_in22k_ft_in1k', pretrained=True)
 
-            # === BEiT 系列 ===
             elif args.model == 'BEiT-B':
-                # BEiT 是 Masked Image Modeling，这里加载的是微调后的权重，可以直接用
+                
                 test_model = timm.create_model('beit_base_patch16_224', pretrained=True)
             elif args.model == 'BEiTv2-B':
                 test_model = timm.create_model('beitv2_base_patch16_224', pretrained=True)
-
-            # === DINOv2 系列 (高危预警) ===
-            elif args.model == 'DINOv2-S':
-                print("⚠️ 警告: DINOv2 原生权重通常不包含分类头。请务必检查 Clean Acc！")
-                print("   如果 Clean Acc 很低，建议改用 DeiT-S 或 ViT-S (AugReg)。")
-                # 尝试加载，但要小心
-                test_model = timm.create_model('vit_small_patch14_dinov2.lvd142m', pretrained=True)
-
-            elif args.model == 'DINOv2-B':
-                test_model = timm.create_model('vit_base_patch14_dinov2.lvd142m', pretrained=True)
-
-            # === 推荐替代 DINOv2 的标准 ViT (如果你发现 DINOv2 准确率不行) ===
-            # elif args.model == 'ViT-B-AugReg':
-            #     # 这是目前 ImageNet 上最标准的 ViT 基准，训练很充分
-            #     model = timm.create_model('vit_base_patch16_224.augreg_in21k_ft_in1k', pretrained=True)
-
             else:
                 logger.warning(f"Skipping unsupported model: {test_model_name}")
                 continue
@@ -353,17 +333,17 @@ def main():
         total_samples = 0
         start_time = time.time()
 
-        # FID 初始化
+        # FID 
         if not quality_metrics['calculated']:
-            # feature=2048 是标准配置
+            
             fid_metric = FrechetInceptionDistance(feature=2048).cuda()
-            fid_metric.inception.cuda()  # 关键！强制把 inception 模型搬到 GPU
+            fid_metric.inception.cuda()  
             fid_metric.inception.eval()
             lpips_scores = []
             l2_scores = []
             ssim_scores = []
 
-        # --- Batch 测试 ---
+       
         pbar = tqdm(test_loader, desc=f"Testing {test_model_name}", leave=False)
         for X, y in pbar:
             X, y = X.cuda(), y.cuda()
@@ -375,7 +355,6 @@ def main():
                 X_adv_raw = torch.clamp(X_st_raw + perb_noise, 0, 1)
                 X_adv_norm = normalize(X_adv_raw)
 
-                # # --- 图像质量计算 (只在第一轮算) ---
                 # if not quality_metrics['calculated']:
                 #     # FID
                 #     X_clean_uint8 = (X_raw * 255).clamp(0, 255).to(torch.uint8)
@@ -419,7 +398,7 @@ def main():
                 quality_metrics['SSIM'] = np.mean(ssim_scores)
                 quality_metrics['L2'] = np.mean(l2_scores)
                 quality_metrics['calculated'] = True
-                del fid_metric  # 释放显存
+                del fid_metric 
             except Exception as e:
                 logger.error(f"Error computing metrics: {e}")
 
@@ -432,7 +411,6 @@ def main():
                       f"{quality_metrics['FID']:.4f}   | {quality_metrics['LPIPS']:.4f}   | "
                       f"{quality_metrics['SSIM']:.4f}   | {quality_metrics['L2']:.4f}   | {elapsed:.1f}s")
 
-        # 写入 Log
         logger.info(result_str)
 
         torch.cuda.empty_cache()
@@ -445,4 +423,5 @@ if __name__ == '__main__':
     import ssl
 
     ssl._create_default_https_context = ssl._create_unverified_context
+
     main()
