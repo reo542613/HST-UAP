@@ -32,9 +32,9 @@ The weights follow the naming convention: {method}_{num_images}_{epochs}_{batch_
 To start testing, run test.py 
 ```
   python test.py
---model vgg19
---noise_path /VGG19/noise.pth
---flow_path /VGG19/flow.pt
+--model DeiT-B
+--noise_path /DeiT-B/noise.pth
+--flow_path /DeiT-B/flow.pt
 ```
 This will start testing your uap on model VGG19, and record the results in result.log. More details can be found in [test.py](test.py).
 
