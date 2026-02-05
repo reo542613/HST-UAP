@@ -1,4 +1,4 @@
-# DM-UAP
+# HST-UAP
 
 ## Dependencies
 The project is recommended to be used with ython 3.9 and PyTorch 1.8.1. All dependencies can be installed with following command:
