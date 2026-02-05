@@ -1,7 +1,7 @@
 [2026/01/25 07:03:13] ==================================================
 [2026/01/25 07:03:13] Starting Test Script
-[2026/01/25 07:03:13] Log saved to: /mnt/igps_622/la/GUAP/revise_checkpoint_lastL/testlog/Test_Result_BEiT-B.log
-[2026/01/25 07:03:13] Arguments: Namespace(batch_size=100, data_path='/mnt/igps_622/la/imagenet/val/', dataset='Imagenet', flow_path='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/flow.pth', log_dir='/mnt/igps_622/la/GUAP/revise_checkpoint_lastL/testlog/', model='BEiT-B', noise_path='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/noise.pth')
+[2026/01/25 07:03:13] Log saved to: /mnt//testlog/Test_Result_BEiT-B.log
+[2026/01/25 07:03:13] Arguments: Namespace(batch_size=100, data_path='/mnt/igps_622/imagenet/val/', dataset='Imagenet', flow_path='/BEiT-B/flow.pth', log_dir='/testlog/', model='BEiT-B', noise_path='/mnt/BEiT-B/noise.pth')
 [2026/01/25 07:03:13] ==================================================
 [2026/01/25 07:03:13] Initializing LPIPS model (AlexNet backbone)...
 [2026/01/25 07:03:14] Loading dataset: Imagenet...
