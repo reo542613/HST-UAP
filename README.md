@@ -6,6 +6,24 @@ The project is recommended to be used with ython 3.9 and PyTorch 1.8.1. All depe
 pip install -r requirements.txt
 ```
 
+## Baseline Weights
+For fair comparison, we provide reproduced baseline weights from prior UAP methods (e.g., SPGD, SGA, DM-UAP) in the baseline/ directory.
+These weights are organized as follows:
+textbaseline/
+├── spgd/
+│   └── spgd/
+│       ├── AlexNet/
+│       │   └── spgd_10000_20epoch_125batch.pth
+│       ├── VGG19/
+│       │   └── ...
+│       └── ...
+├── sga/
+│   └── ...
+└── dm-uap/
+    └── ...
+You can use these pre-computed weights for evaluation or comparison without re-training the baselines.
+The weights follow the naming convention: {method}_{num_images}_{epochs}_{batch_size}.pth (e.g., spgd_10000_20epoch_125batch.pth).
+
 
 ## Training
 To start training, run imagenet_attack.py 
