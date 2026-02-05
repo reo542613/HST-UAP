@@ -1,8 +1,6 @@
 # HST-UAP: Hierarchical Spatial Transformation Universal Adversarial Perturbation
 
-HST-UAP is a novel universal adversarial attack framework that integrates **hierarchical spatial transformation** (flow field) and **additive perturbation** to generate highly transferable universal adversarial perturbations (UAPs). By using two structurally independent generators — FlowGEN for spatial flow and NoiseGEN for additive noise — HST-UAP achieves explicit disentanglement from the generation stage, overcoming the structural entanglement and limited diversity of prior methods.
-
-This approach leads to stronger attack success rates, better generalization, and superior cross-model transferability across both CNNs and modern Vision Transformers.
+HST-UAP is a novel universal adversarial attack framework that integrates hierarchical spatial transformation (flow field) and additive perturbation to generate highly transferable universal adversarial perturbations (UAPs). It uses two structurally independent generators — FlowGEN for spatial flow and NoiseGEN for additive noise — achieving explicit disentanglement from the generation stage, resulting in stronger attack performance, better generalization, and superior cross-model transferability across CNNs and Vision Transformers.
 
 ## Features
 
@@ -59,3 +57,33 @@ Supported test models:
 
 CNNs: AlexNet, VGG16, VGG19, ResNet152, GoogLeNet
 Transformers: ViT-B/L, DeiT-S/B, Swin-T/S/B
+
+Logs are saved to:
+text/mnt/igps_622/la/GUAP/revise_checkpoint_L_2loss/{model}/{train_num}_{model}_ImageNetGUAP_checkpoint.log
+Visualization
+Adversarial examples, flow fields, and hyperparameter grids are saved to:
+text/mnt/igps_622/la/GUAP/revise_checkpoint_L_2loss/{model}/savefig/
+To generate hyperparameter ablation grids (after training):
+Bashpython vis_hyper_grid.py  # Run in the directory with .pth files
+Citation
+If you use HST-UAP in your research, please cite:
+bibtex@article{hst-uap,
+  title={HST-UAP: Hierarchical Spatial Transformation Universal Adversarial Perturbation},
+  author={Your Name},
+  journal={Your Conference/Journal},
+  year={2025}
+}
+Acknowledgments
+
+Built upon foundational UAP works and modern architectures (ViT, DeiT, Swin, ConvNeXt, BEiT)
+Uses timm library for pre-trained Transformer models
+
+License
+MIT License
+Contact
+
+GitHub: https://github.com/reo542613/HST-UAP
+Issues: https://github.com/reo542613/HST-UAP/issues
+
+For any questions or collaborations, feel free to open an issue.
+text
