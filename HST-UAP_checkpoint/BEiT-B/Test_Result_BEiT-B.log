@@ -1,0 +1,20 @@
+[2026/01/25 07:03:13] ==================================================
+[2026/01/25 07:03:13] Starting Test Script
+[2026/01/25 07:03:13] Log saved to: /mnt/igps_622/la/GUAP/revise_checkpoint_lastL/testlog/Test_Result_BEiT-B.log
+[2026/01/25 07:03:13] Arguments: Namespace(batch_size=100, data_path='/mnt/igps_622/la/imagenet/val/', dataset='Imagenet', flow_path='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/flow.pth', log_dir='/mnt/igps_622/la/GUAP/revise_checkpoint_lastL/testlog/', model='BEiT-B', noise_path='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/noise.pth')
+[2026/01/25 07:03:13] ==================================================
+[2026/01/25 07:03:13] Initializing LPIPS model (AlexNet backbone)...
+[2026/01/25 07:03:14] Loading dataset: Imagenet...
+[2026/01/25 07:03:14] Loading perturbations:
+  Flow: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/flow.pth
+  Noise: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/BEiT-B/noise.pth
+[2026/01/25 07:03:14] 
+Starting evaluation loop...
+[2026/01/25 07:03:14] ----------------------------------------------------------------------------------------------------
+[2026/01/25 07:03:14] Model        | Clean Acc  | Adv Acc    | ASR        | FID      | LPIPS    | SSIM     | L2       | Time    
+[2026/01/25 07:03:14] ----------------------------------------------------------------------------------------------------
+[2026/01/25 07:07:44] Computing FID score (this may take a moment)...
+[2026/01/25 07:07:44] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/01/25 07:07:44] BEiT-B       | 0.8521     | 0.0570     | 94.30%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 267.4s
+[2026/01/25 07:07:44] ----------------------------------------------------------------------------------------------------
+[2026/01/25 07:07:44] Testing completed.

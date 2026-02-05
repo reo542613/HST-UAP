@@ -1,0 +1,35 @@
+[2026/02/05 23:48:02] ==================================================
+[2026/02/05 23:48:02] Starting Test Script
+[2026/02/05 23:48:02] Log saved to: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/Test_Result_1.log
+[2026/02/05 23:48:02] Arguments: Namespace(batch_size=100, data_path='/mnt/igps_622/la/imagenet/val/', dataset='Imagenet', flow_path='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/0.9258_10000_0.3_0.05_0.01_0_0_180_flow.pth', log_dir='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/', model='1', noise_path='/mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/0.9258_10000_0.3_0.05_0.01_0_0_180_noise.pth')
+[2026/02/05 23:48:02] ==================================================
+[2026/02/05 23:48:02] Initializing LPIPS model (AlexNet backbone)...
+[2026/02/05 23:48:03] Loading dataset: Imagenet...
+[2026/02/05 23:48:03] Loading perturbations:
+  Flow: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/0.9258_10000_0.3_0.05_0.01_0_0_180_flow.pth
+  Noise: /mnt/igps_622/la/GUAP/revise_checkpoint_gpu/DeiT-S/0.9258_10000_0.3_0.05_0.01_0_0_180_noise.pth
+[2026/02/05 23:48:03] 
+Starting evaluation loop...
+[2026/02/05 23:48:03] ----------------------------------------------------------------------------------------------------
+[2026/02/05 23:48:03] Model        | Clean Acc  | Adv Acc    | ASR        | FID      | LPIPS    | SSIM     | L2       | Time    
+[2026/02/05 23:48:03] ----------------------------------------------------------------------------------------------------
+[2026/02/05 23:52:52] Computing FID score (this may take a moment)...
+[2026/02/05 23:52:52] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/02/05 23:52:52] DeiT-B       | 0.8174     | 0.6580     | 34.20%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 260.7s
+[2026/02/05 23:55:40] Computing FID score (this may take a moment)...
+[2026/02/05 23:55:40] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/02/05 23:55:40] DeiT-S       | 0.7972     | 0.1073     | 89.27%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 142.4s
+[2026/02/06 00:01:39] Computing FID score (this may take a moment)...
+[2026/02/06 00:01:39] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/02/06 00:01:39] Swin-B       | 0.8471     | 0.8383     | 16.17%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 329.9s
+[2026/02/06 00:06:43] Computing FID score (this may take a moment)...
+[2026/02/06 00:06:43] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/02/06 00:06:43] Swin-S       | 0.8305     | 0.8211     | 17.89%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 235.2s
+[2026/02/06 00:09:51] Computing FID score (this may take a moment)...
+[2026/02/06 00:09:51] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/02/06 00:09:51] Swin-T       | 0.8091     | 0.7452     | 25.48%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 161.5s
+[2026/02/06 00:14:36] Computing FID score (this may take a moment)...
+[2026/02/06 00:14:36] Error computing metrics: More than one sample is required for both the real and fake distributed to compute FID
+[2026/02/06 00:14:36] ViT-B        | 0.8108     | 0.7060     | 29.40%     | 0.0000   | 0.0000   | 0.0000   | 0.0000   | 257.7s
+[2026/02/06 00:14:36] ----------------------------------------------------------------------------------------------------
+[2026/02/06 00:14:36] Testing completed.
