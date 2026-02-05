@@ -27,25 +27,6 @@ You can use these pre-computed weights for evaluation or comparison without re-t
 The weights follow the naming convention: {method}_{num_images}_{epochs}_{batch_size}.pth (e.g., spgd_10000_20epoch_125batch.pth).
 
 
-## Training
-To start training, run imagenet_attack.py 
-```
-python imagenet_attack.py  
-  --model VGG19 \
-  --dataset ImageNet \
-  --batch_size 128 \
-  --epochs 60 \
-  --lr 0.001 \
-  --gamma 0.2 \
-  --alpha1 0.05 \
-  --alpha2 0.01 \
-  --beta1 0.0085 \
-  --beta2 0.12 \
-  --train_num 10000 \
-  --tau 0.1 \
-  --allow 10./255
-```
-This is to craft a UAP from the surrogate model VGG19. More details can be found in [imagenet_attack.py](imagenet_attack.py).
 
 ## Testing
 To start testing, run test.py 
