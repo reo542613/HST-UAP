@@ -26,7 +26,8 @@ baseline/
 You can use these pre-computed weights for evaluation or comparison without re-training the baselines.
 The weights follow the naming convention: {method}_{num_images}_{epochs}_{batch_size}.pth (e.g., spgd_10000_20epoch_125batch.pth).
 
-
+## Training
+The repository is currently under construction. For review purposes, we have provided the testing scripts and pre-trained checkpoints. The full codebase will be released after the paper is accepted.
 
 ## Testing
 To start testing, run test.py 
