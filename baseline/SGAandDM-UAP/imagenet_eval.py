@@ -25,7 +25,7 @@ def main(args):
         transforms.CenterCrop(224),
         transforms.ToTensor(),
     ])
-    testset = torchvision.datasets.ImageFolder('/mnt/igps_622/la/imagenet/val/', transform=transform_data)
+    testset = torchvision.datasets.ImageFolder('/mnt/imagenet/val/', transform=transform_data)
     loader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False,
                                               num_workers=16)
     if args.model_name.lower() == 'all':
@@ -54,7 +54,7 @@ def parse_arguments(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_dir', default='/../imagent/val/',
                         help='training set directory')
-    parser.add_argument('--uaps_save', default='/mnt/igps_622/la/DM-UAP-main/SPGD/VGG9/sga_10000_20epoch_125batch.pth',
+    parser.add_argument('--uaps_save', default='/mnt/DM-UAP-main/SPGD/VGG9/sga_10000_20epoch_125batch.pth',
                         help='training set directory')
     parser.add_argument('--batch_size', type=int, help='', default=250)
     parser.add_argument('--model_name', default='vgg16', help='test model')
