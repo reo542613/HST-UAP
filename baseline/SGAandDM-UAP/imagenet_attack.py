@@ -32,7 +32,7 @@ def main(args):
     print(args)
     if not os.path.exists(args.uaps_save):
         try:
-            # exist_ok=True 防止在并发情况下报错，makedirs 可以创建多级目录
+           
             os.makedirs(args.uaps_save, exist_ok=True)
             print(f"Directory did not exist, created: {args.uaps_save}")
         except OSError as e:
@@ -66,7 +66,7 @@ def main(args):
     # trainset = datasets.ImageFolder('D:/imagedata/train/', transform=transform_data)
     # testset = datasets.ImageFolder('D:/imagedata/val/', transform=transform_data)
 
-    #  Function to select first N images per class 每个种类取十张
+    #  Function to select first N images per class 
     def select_first_n_per_class(dataset, n=10):
         # Get class to indices mapping
         class_to_idx = dataset.class_to_idx
@@ -88,29 +88,26 @@ def main(args):
     # Create new datasets with first 10 images per class
     trainset = select_first_n_per_class(trainset, n=10)
     # 10000
-
-    # #每个种类取一张，前500个种类
     # def select_first_n_per_class(dataset, n=1, num_classes=500):
-    #     # 获取类别到索引的映射
+    #     
     #     class_to_idx = dataset.class_to_idx
     #
-    #     # 存储选择的样本索引
+    #     
     #     selected_indices = []
     #
-    #     # 遍历前 num_classes 个类别
+    #     
     #     for class_idx in range(min(num_classes, len(class_to_idx))):
-    #         # 获取该类别所有样本的索引
+    #         
     #         class_indices = [i for i, (_, label) in enumerate(dataset.samples) if label == class_idx]
-    #         # 选择前 n 个索引（如果少于 n，则取所有）
+    #         
     #         selected = class_indices[:min(n, len(class_indices))]
     #         selected_indices.extend(selected)
     #
-    #     # 创建数据集子集
     #     return Subset(dataset, selected_indices)
     #
     # trainset = select_first_n_per_class(trainset, n=1, num_classes=500)
     # testset = torchvision.datasets.ImageFolder('/mnt/igps_622/la/imagenet/val/', transform=transform_data)
-    # # 500
+    
 
     loader = torch.utils.data.DataLoader(trainset,batch_size=batch_size,shuffle=True,num_workers=16)
     loader_eval = torch.utils.data.DataLoader(trainset,batch_size=100,shuffle=True,num_workers=16)
@@ -144,9 +141,9 @@ def main(args):
 
 def parse_arguments(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', default='/mnt/igps_622/la/imagenet/train/',
+    parser.add_argument('--data_dir', default='/mnt/imagenet/train/',
                         help='training set directory')
-    parser.add_argument('--uaps_save', default='/mnt/igps_622/la/DM-UAP-main/checkpoint/',
+    parser.add_argument('--uaps_save', default='/mnt/DM-UAP-main/checkpoint/',
                         help='training set directory')
     parser.add_argument('--batch_size', type=int, help='batch size', default=125)
     
