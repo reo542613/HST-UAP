@@ -6,9 +6,9 @@
 models=(  "ResNet56")
 
 # 基础配置
-data_dir_train="/mnt/igps_622/la/imagenet/train/"
-data_dir_val="/mnt/igps_622/la/imagenet/val/"
-base_checkpoint_dir="/mnt/igps_622/la/DM-UAP-main/SGA_cifar10"
+data_dir_train="/mnt/imagenet/train/"
+data_dir_val="/mnt/imagenet/val/"
+base_checkpoint_dir="/mnt/DM-UAP-main/SGA_cifar10"
 
 # 攻击参数
 batch_size=125
