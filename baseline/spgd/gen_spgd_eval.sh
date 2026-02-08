@@ -1,27 +1,27 @@
 ##eval for SGPD
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/DEITB/spgd_10000_20epoch_250batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/DEITB/spgd_DEITB.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/DEITB/spgd_10000_20epoch_250batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/DEITB/spgd_DEITB.log &
 #
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/DEITS/spgd_10000_20epoch_250batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/DEITS/spgd_DEITS.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/DEITS/spgd_10000_20epoch_250batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/DEITS/spgd_DEITS.log &
 #wait
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/SWINB/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/SWINB/spgd_SWINB.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/SWINB/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/SWINB/spgd_SWINB.log &
 #
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/SWINS/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/SWINS/spgd_SWINS.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/SWINS/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/SWINS/spgd_SWINS.log &
 #wait
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/VITL/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/VITL/spgd_SWINT.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/VITL/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/VITL/spgd_SWINT.log &
 #
 #
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/VITB/spgd_10000_20epoch_250batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/VITB/spgd_VITB.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/VITB/spgd_10000_20epoch_250batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/VITB/spgd_VITB.log &
 #
 # ========== 仅改路径，其余保持原样 ==========
-#CUDA_VISIBLE_DEVICES='0' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/AlexNet/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/AlexNet/spgd_AlexNet.log &
+#CUDA_VISIBLE_DEVICES='0' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/AlexNet/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/AlexNet/spgd_AlexNet.log &
 #
-#CUDA_VISIBLE_DEVICES='0' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/GoogLeNet/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/GoogLeNet/spgd_GoogLeNet.log &
+#CUDA_VISIBLE_DEVICES='0' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/GoogLeNet/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/GoogLeNet/spgd_GoogLeNet.log &
 #wait
-#CUDA_VISIBLE_DEVICES='0' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/VGG16/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/VGG16/spgd_VGG16.log &
+#CUDA_VISIBLE_DEVICES='0' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/VGG16/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/VGG16/spgd_VGG16.log &
 #
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/VGG19/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/VGG19/spgd_VGG19.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/VGG19/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/VGG19/spgd_VGG19.log &
 #wait
-#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/igps_622/la/SPGDandSGA/spgd/ResNet152/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/igps_622/la/SPGDandSGA/spgd/ResNet152/spgd_ResNet152.log &
+#CUDA_VISIBLE_DEVICES='1' python imagenet_eval.py --uaps_save /mnt/SPGDandSGA/spgd/ResNet152/spgd_10000_20epoch_125batch.pth --batch_size 100 --model_name all 2>&1|tee /mnt/SPGDandSGA/spgd/ResNet152/spgd_ResNet152.log &
 
 
 
@@ -33,9 +33,9 @@
 models=( "VGG19"  "DenseNet121" "ResNet56")
 
 # 基础配置
-data_dir_train="/mnt/igps_622/la/imagenet/train/"
-data_dir_val="/mnt/igps_622/la/imagenet/val/"
-base_checkpoint_dir="/mnt/igps_622/la/SPGDandSGA/spgd_cifar"
+data_dir_train="/mnt/imagenet/train/"
+data_dir_val="/mnt/imagenet/val/"
+base_checkpoint_dir="/mnt/SPGDandSGA/spgd_cifar"
 
 # 攻击参数
 batch_size=125
