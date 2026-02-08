@@ -8,7 +8,7 @@ for m in "${models[@]}"; do
     mkdir -p "$save_path"
 
     CUDA_VISIBLE_DEVICES=0 python cifar_attack.py \
-        --data_dir /mnt/igps_622/la/imagenet/train/ \
+        --data_dir /mnt/imagenet/train/ \
         --uaps_save "$save_path" \
         --batch_size 125 \
         --alpha 10 \
