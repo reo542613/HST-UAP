@@ -4,9 +4,9 @@
 # The meaning of the parameters can be find in the py files seperately.
 
 
-uaps_save_path="/mnt/igps_622/la/DM-UAP-main/checkpoint/Vit-B/"
+uaps_save_path="/mnt/DM-UAP-main/checkpoint/Vit-B/"
 
-CUDA_VISIBLE_DEVICES=1 python imagenet_attack.py --data_dir /mnt/igps_622/la/imagenet/train/ \
+CUDA_VISIBLE_DEVICES=1 python imagenet_attack.py --data_dir /mnt/imagenet/train/ \
     --uaps_save "$uaps_save_path" \
     --batch_size 125 --alpha 10 --epoch 20 --dm 1 \
     --num_images 500 \
@@ -21,7 +21,7 @@ CUDA_VISIBLE_DEVICES=1 python imagenet_attack.py --data_dir /mnt/igps_622/la/ima
 uaps_save_path="path/to/your/save_dir/delta_file_name"
 uaps_save_path2="path/to/your/save_dir/result.log"
 
-python imagenet_eval.py --data_dir /mnt/igps_622/la/imagenet/val/ \
+python imagenet_eval.py --data_dir /mnt/imagenet/val/ \
   --uaps_save "$uaps_save_path" \
   --batch_size 125  --number 1000 \
   --model_name all 2>&1|tee -a "$uaps_save_path2"
