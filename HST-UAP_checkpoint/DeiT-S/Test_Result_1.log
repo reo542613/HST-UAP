@@ -1,7 +1,7 @@
 [2026/02/05 23:48:02] ==================================================
 [2026/02/05 23:48:02] Starting Test Script
 [2026/02/05 23:48:02] Log saved to: /mnt/DeiT-S/Test_Result_1.log
-[2026/02/05 23:48:02] Arguments: Namespace(batch_size=100, data_path='/mnt/igps_622/la/imagenet/val/', dataset='Imagenet', flow_path='/mnt/flow.pth', log_dir='/mnt/DeiT-S/', model='1', noise_path='/mnt/DeiT-S/noise.pth')
+[2026/02/05 23:48:02] Arguments: Namespace(batch_size=100, data_path='/mnt/imagenet/val/', dataset='Imagenet', flow_path='/mnt/flow.pth', log_dir='/mnt/DeiT-S/', model='1', noise_path='/mnt/DeiT-S/noise.pth')
 [2026/02/05 23:48:02] ==================================================
 [2026/02/05 23:48:02] Initializing LPIPS model (AlexNet backbone)...
 [2026/02/05 23:48:03] Loading dataset: Imagenet...
